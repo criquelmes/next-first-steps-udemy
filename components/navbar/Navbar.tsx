@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HomeIcon } from "@primer/octicons-react";
+import { ActiveLink } from "../active-link/ActiveLink";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -12,7 +13,6 @@ const navItems = [
 ];
 
 export const Navbar = (props: NavbarProps) => {
-  console.log("navbar creado");
   return (
     <>
       <nav className="flex bg-blue-800 bg-opacity-30 p-2 m-2 rounded">
@@ -22,9 +22,7 @@ export const Navbar = (props: NavbarProps) => {
         </Link>
         <div className="flex-grow" />
         {navItems.map((item) => (
-          <Link key={item.href} href={item.href} className="mr-2">
-            {item.label}
-          </Link>
+          <ActiveLink key={item.href} {...item} />
         ))}
       </nav>
       {props.children}
